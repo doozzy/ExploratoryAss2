@@ -1,0 +1,12 @@
+library(ggplot2)
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+SCCCoal <-SCC[grep("Fuel Comb.*Coal$",SCC$EI.Sector, perl=TRUE),]$SCC
+NEI <- transform(NEI, SCC= factor(SCC))
+both <- intersect(NEI$SCC, SCCCoal)
+SubNEI <- subset(NEI, SCC %in% both)
+totalEmission <- tapply(SubNEI$Emissions, SubNEI$year, FUN = mean)
+plott=  qplot(names(totalEmission), log10(totalEmission))
+print(plott)
+ dev.copy(png, file ="Plot4.png")
+dev.off()
