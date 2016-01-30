@@ -1,7 +1,7 @@
 library(ggplot2)
 #read data
-NEI <- readRDS("../summarySCC_PM25.rds")
-SCC <- readRDS("../Source_Classification_Code.rds")
+NEI <- readRDS("./summarySCC_PM25.rds")
+SCC <- readRDS("./Source_Classification_Code.rds")
 #make two variables categorial
 NEI <- transform(NEI, year= factor(year))
 NEI <- transform(NEI, type= factor(type))
