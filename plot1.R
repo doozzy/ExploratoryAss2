@@ -13,7 +13,8 @@ totalEmission <- tapply(NEI$Emissions, NEI$year, FUN = sum)
 
 #x axes labels
 years <-names(totalEmission)
-plot( totalEmission, xaxt = "n", , xlab= "Year")
+
+plot( totalEmission, xaxt = "n", , xlab= "Year", main = "total PM2.5 emission from all sources for each year")
 lines(totalEmission)
 axis(1, at=1:length(years), labels=years)
 
